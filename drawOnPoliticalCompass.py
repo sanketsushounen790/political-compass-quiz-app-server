@@ -1,5 +1,4 @@
 # importing libraries
-from turtle import color
 import matplotlib.pyplot as plt
 import os
 import sys
@@ -58,9 +57,16 @@ def draw(arg_x, arg_y, x_name, y_name):
 	# config the directory path to save images and each image name 
 
 	image_name = x_name + ',' + y_name + '.png'
+
+	CHECK_FOLDER = os.path.isdir('images')
+
+	# If folder doesn't exist, then create it.
+	if not CHECK_FOLDER: os.mkdir(os.path.join(dirname, 'images'))
+
 	filename = os.path.join(dirname, 'images', image_name)
 
 	plt.axis('off')
+
 	# save the figure
 	plt.savefig(filename, bbox_inches='tight', pad_inches = 0)
 
